@@ -1,0 +1,4 @@
+ESP32 aktiviert!
+Zeitpunkt: {{timestamp}}
+IP-Adresse: {{device_ip}}
+{{extra_info}}
