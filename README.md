@@ -15,7 +15,6 @@ Dieses Projekt implementiert ein Benachrichtigungssystem basierend auf einem ESP
 
 *   ESP32 Entwicklungsboard (im Code konfiguriert als `nodemcu-32s`)
 *   LDR (Fotowiderstand) als Spannungsteiler konfiguriert und an **GPIO 34** angeschlossen
-*   Taster (falls nicht der Onboard-Flash-Button **GPIO 0** verwendet wird)
 *   USB-Kabel zur Stromversorgung und Programmierung
 
 ## Software-Anforderungen
@@ -33,7 +32,7 @@ Befolgen Sie diese Schritte, um das Projekt erfolgreich auf Ihrem ESP32 zu insta
 
 ### 2. Zugangsdaten konfigurieren (Secrets)
 
-Ihre WLAN- und E-Mail-Zugangsdaten dürfen nicht öffentlich geteilt werden. Daher verwendet dieses Projekt eine separate `secrets.h` Datei.
+Ihre WLAN- und E-Mail-Zugangsdaten dürfen nicht öffentlich geteilt werden. Daher verwendet dieses Projekt eine separate `secrets.h` Datei. Diese muss zu erst noch erstellt werden. Als Beispiel dient die Datei `secrets.example.h`.
 
 1.  Navigieren Sie in den Ordner `src/`.
 2.  Erstellen Sie eine Kopie der Datei `secrets.example.h` und benennen Sie diese in `secrets.h` um.
@@ -70,7 +69,7 @@ Nachdem das Dateisystem geflasht wurde, können Sie den eigentlichen C++ Program
 *   **Schwellenwert (Threshold):** In `src/main.cpp` ist `#define THRESHOLD 0.8` definiert. Passen Sie diesen Wert an die realen Licht-Bedingungen und Ihren LDR-Spannungsteiler an.
 *   **Zeitzone:** Die NTP-Zeitzone ist in `main.cpp` unter `time_zone = "CET-1CEST,M3.5.0,M10.5.0/3"` konfiguriert (gültig für Mitteleuropa).
 *   **E-Mail-Vorlagen:** Die HTML- und Text-Vorlagen können in den entsprechenden Dateien im `data/` Ordner angepasst werden. Belassen Sie Platzhalter wie `{{timestamp}}` oder `{{extra_info}}` intakt, damit diese im Code zur Laufzeit dynamisch ersetzt werden können.
-
+*   **Email-Empfänger:** In `secrets.h` wird ein Hauptempfänger definiert. Für eine Weiterleitung ist der Weg über das Outlookkontos des Hauptempfängers zu empfehlen.
 ## Fehlerbehebung
 
 *   **Verbindungsprobleme:** Überprüfen Sie die Ausgabe im Serial Monitor. Bei SMTP-Fehlern prüfen Sie Ihre E-Mail-Zugangsdaten (insbesondere das generierte App-Passwort).
